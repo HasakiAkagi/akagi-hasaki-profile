@@ -1,0 +1,411 @@
+@charset "utf-8";
+
+/* 基本設定 */
+html {
+  font-size: 100%;
+}
+
+body {
+  font-size: 1.2rem;
+  color: #dd2aa1;
+  background-color: #294b8b;
+  background-repeat: repeat;
+  margin: 0;
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+li {
+  list-style: none;
+}
+
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto 40px auto;
+  padding: 4%;
+  text-align: center;
+  background-color: ivory;
+  box-sizing: border-box;
+}
+
+/* ==============================
+   ヘッダー
+============================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 4%;
+  box-sizing: border-box;
+}
+
+header img {
+  height: 60px;
+  margin-top: 10px;
+}
+
+header a {
+  display: block;
+}
+
+nav ul {
+  display: flex;
+  padding: 10px 0;
+  margin: 0;
+}
+
+nav li {
+  margin-left: 30px;
+}
+
+nav li a {
+  color: #ffffff;
+  opacity: 0.7;
+}
+
+nav li a:hover {
+  opacity: 1;
+}
+
+/* ==============================
+   見出し
+============================== */
+h1 {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0;
+  height: 40px;
+}
+
+h2 {
+  display: block;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 60px;
+  border-bottom: solid 1px #47465F;
+}
+
+h3 {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 10px 0;
+  line-height: 1.4em;
+  padding: 5px;
+  text-align: center;
+}
+
+/* ==============================
+   メインビジュアル
+============================== */
+.mainvisual img {
+  width: 100%;
+  height: auto;
+}
+
+/* ==============================
+   プロフィール
+   HTML: <section id="profile" class="profile wrapper">
+============================== */
+#profile {
+  margin-bottom: 80px;
+}
+
+#profile p {
+  margin-bottom: 20px;
+}
+
+#profile .profile_marquee {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 40px;
+}
+
+#profile .marquee_track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: profileMarquee 22s linear infinite;
+}
+
+#profile .marquee_track img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+@keyframes profileMarquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ==============================
+   水族館
+============================== */
+.aquarium.wrapper {
+  padding-bottom: 40px;
+}
+
+.aquarium .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.aquarium .text {
+  text-align: left;
+  width: 100%;
+}
+
+.aquarium_ite {
+  margin-bottom: 50px;
+}
+
+.aquarium_ite h3,
+.aquarium_ite p {
+  text-align: center;
+}
+
+/* スライダー全体 */
+.aquarium_slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* もし id="slider_aqua" も使うなら一応対応 */
+#slider_aqua {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* 左右ボタン */
+.slider_btn {
+  border: none;
+  background: rgba(0, 0, 0, 0.15);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #000;
+  flex-shrink: 0;
+}
+
+.slider_btn:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* 表示範囲 */
+.slider_viewport {
+  overflow: hidden;
+  width: 600px;
+  max-width: 100%;
+}
+
+/* 横並びの本体 */
+.slider_track {
+  display: flex;
+  gap: 20px;
+  transform: translateX(0);
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+.slider_track img {
+  width: 180px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.slider_track img:hover {
+  transform: scale(1.05);
+}
+
+/* ==============================
+   モーダル
+============================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.modal.is-open {
+  display: flex;
+}
+
+.modal__inner {
+  width: min(640px, 100%);
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+.modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: #f2f2f2;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.modal__img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.modal__title {
+  margin: 10px 0 6px;
+  font-size: 1.2rem;
+}
+
+.modal__text {
+  margin: 0 0 8px;
+  line-height: 1.6;
+}
+
+.modal__address {
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal__ok {
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* 住所を表示したくない場合はこれで非表示にできる
+.modal__address {
+  display: none !important;
+}
+*/
+
+/* ==============================
+   メッセージ
+============================== */
+.message .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message .text {
+  text-align: left;
+}
+
+/* ==============================
+   フッター
+============================== */
+footer {
+  font-size: 0.8rem;
+  padding: 10px 0;
+  text-align: center;
+  color: #fff;
+}
+
+/* ==============================
+   フォーカス表示
+============================== */
+select:focus {
+  outline: 3px solid #ff66cc;
+  outline-offset: 3px;
+}
+
+/* ==============================
+   レスポンシブ
+============================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+    padding-top: 10px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  nav li {
+    margin-left: 0;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .slider_viewport {
+    width: 100%;
+  }
+
+  .slider_track img {
+    width: 140px;
+    height: 120px;
+  }
+
+  .modal__inner {
+    padding: 16px;
+  }
+}
